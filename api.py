@@ -8,86 +8,6 @@ def get_api(url):
     result = requests.get(url)
     return result.json()
 
-def get_culumn_list():
-    culumun_list =[]
-    culumun_list.append("順位")
-    culumun_list.append("キャリア")
-    culumun_list.append("商品名")
-    culumun_list.append("キャッチコピー")
-    culumun_list.append("商品コード")
-    culumun_list.append("商品価格")
-    culumun_list.append("商品説明文")
-    culumun_list.append("商品URL")
-    culumun_list.append("アフィリエイトURL")
-    culumun_list.append("商品画像有無フラグ")
-    culumun_list.append("商品画像64x64URL(1)")
-    culumun_list.append("商品画像64x64URL(2)")
-    culumun_list.append("商品画像64x64URL(3)")
-    culumun_list.append("商品画像128x128URL(1)")
-    culumun_list.append("商品画像128x128URL(2)")
-    culumun_list.append("商品画像128x128URL(3)")
-    culumun_list.append("販売可能フラグ")
-    culumun_list.append("消費税フラグ")
-    culumun_list.append("送料フラグ")
-    culumun_list.append("クレジットカード利用可能フラグ")
-    culumun_list.append("ショップオブザイヤーフラグ")
-    culumun_list.append("海外配送フラグ")
-    culumun_list.append("海外配送対象地域")
-    culumun_list.append("あす楽フラグ")
-    culumun_list.append("あす楽〆時間")
-    culumun_list.append("あす楽配送対象地域")
-    culumun_list.append("アフィリエイト利用利率")
-    culumun_list.append("販売開始時刻")
-    culumun_list.append("販売終了時刻")
-    culumun_list.append("レビュー件数")
-    culumun_list.append("レビュー平均")
-    culumun_list.append("商品別ポイント倍付け")
-    culumun_list.append("商品別ポイント倍付け開始日時")
-    culumun_list.append("商品別ポイント倍付け終了日時")
-    culumun_list.append("店舗名")
-    culumun_list.append("店舗コード")
-    culumun_list.append("店舗URL")
-    culumun_list.append("ジャンル情報")
-    return culumun_list
-
-def get_json_key_list():
-    json_key_list = []
-    json_key_list.append("rank")
-    json_key_list.append("carrier")
-    json_key_list.append("itemName")
-    json_key_list.append("catchcopy")
-    json_key_list.append("itemCode")
-    json_key_list.append("itemPrice")
-    json_key_list.append("itemCaption")
-    json_key_list.append("itemUrl")
-    json_key_list.append("affiliateUrl")
-    json_key_list.append("imageFlag")
-    json_key_list.append("smallImageUrls")
-    json_key_list.append("mediumImageUrls")
-    json_key_list.append("availability")
-    json_key_list.append("taxFlag")
-    json_key_list.append("postageFlag")
-    json_key_list.append("creditCardFlag")
-    json_key_list.append("shopOfTheYearFlag")
-    json_key_list.append("shipOverseasFlag")
-    json_key_list.append("shipOverseasArea")
-    json_key_list.append("asurakuFlag")
-    json_key_list.append("asurakuClosingTime")
-    json_key_list.append("asurakuArea")
-    json_key_list.append("affiliateRate")
-    json_key_list.append("startTime")
-    json_key_list.append("endTime")
-    json_key_list.append("reviewCount")
-    json_key_list.append("reviewAverage")
-    json_key_list.append("pointRate")
-    json_key_list.append("pointRateStartTime")
-    json_key_list.append("pointRateEndTime")
-    json_key_list.append("shopName")
-    json_key_list.append("shopCode")
-    json_key_list.append("shopUrl")
-    json_key_list.append("genreId")
-    return json_key_list
-
 ### 課題1：商品名と価格の一覧を取得
 def study_1():
     keyword = input("検索したいキーワードを入力してください。：")
@@ -136,9 +56,19 @@ def study_3():
     ranking_json = get_api(url)
 
     # データフレーム作成用カラム情報
-    column_list = get_culumn_list()
+    column_list = ["順位","キャリア","商品名","キャッチコピー","商品コード","商品価格","商品説明文"
+    ,"商品URL","アフィリエイトURL","商品画像有無フラグ","商品画像64x64URL(1)","商品画像64x64URL(2)"
+    ,"商品画像64x64URL(3)","商品画像128x128URL(1)","商品画像128x128URL(2)","商品画像128x128URL(3)"
+    ,"販売可能フラグ","消費税フラグ","送料フラグ","クレジットカード利用可能フラグ","ショップオブザイヤーフラグ"
+    ,"海外配送フラグ","海外配送対象地域","あす楽フラグ","あす楽〆時間","あす楽配送対象地域","アフィリエイト利用利率"
+    ,"販売開始時刻","販売終了時刻","レビュー件数","レビュー平均","商品別ポイント倍付け","商品別ポイント倍付け開始日時"
+    ,"商品別ポイント倍付け終了日時","店舗名","店舗コード","店舗URL","ジャンル情報"]
     # JSONファイルのキーリスト
-    json_key_list = get_json_key_list()
+    json_key_list = ["rank","carrier","itemName","catchcopy","itemCode","itemPrice","itemCaption"
+    ,"itemUrl","affiliateUrl","imageFlag","smallImageUrls","mediumImageUrls","availability","taxFlag"
+    ,"postageFlag","creditCardFlag","shopOfTheYearFlag","shipOverseasFlag","shipOverseasArea","asurakuFlag"
+    ,"asurakuClosingTime","asurakuArea","affiliateRate","startTime","endTime","reviewCount","reviewAverage"
+    ,"pointRate","pointRateStartTime","pointRateEndTime","shopName","shopCode","shopUrl","genreId"]
     # JSONファイルを成形
     ranking_info_list = []
     for info in ranking_json["Items"] :
@@ -160,8 +90,8 @@ def study_3():
     print("CSVファイルを出力しました。({})".format(csv_path))
 
 # 課題1呼び出し
-study_1()
+#study_1()
 # 課題2呼び出し
-study_2()
+#study_2()
 # 課題3呼び出し
 study_3()
